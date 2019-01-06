@@ -7,7 +7,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
-public class Presenter {
+public class Presenter implements Contract.Presenter{
 
     private static final String TAG = "Presenter";
 
@@ -20,7 +20,8 @@ public class Presenter {
     }
 
 
-    public void getCats(){
+    @Override
+    public void getCats() {
         apiClient.getApiClient().getCatPic()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -33,6 +34,7 @@ public class Presenter {
                     @Override
                     public void onNext(CatsModel catsModel) {
                         Log.i(TAG, "onNext: " + catsModel.getFile());
+                        view.displayCatImage(catsModel.getFile());
                     }
 
                     @Override
@@ -46,5 +48,4 @@ public class Presenter {
                     }
                 });
     }
-
 }
