@@ -1,4 +1,4 @@
-package com.aman1.rxjavatest;
+package com.aman1.rxjavatest.data;
 
 
 import io.reactivex.Observable;

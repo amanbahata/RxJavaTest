@@ -1,7 +1,4 @@
-package com.aman1.rxjavatest;
-
-import android.net.Uri;
-
+package com.aman1.rxjavatest.MVP;
 
 public interface Contract {
 

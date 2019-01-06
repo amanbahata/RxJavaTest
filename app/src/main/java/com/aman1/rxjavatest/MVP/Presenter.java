@@ -1,6 +1,9 @@
-package com.aman1.rxjavatest;
+package com.aman1.rxjavatest.MVP;
 
 import android.util.Log;
+
+import com.aman1.rxjavatest.data.ApiClient;
+import com.aman1.rxjavatest.data.CatsModel;
 
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -11,14 +14,13 @@ public class Presenter implements Contract.Presenter{
 
     private static final String TAG = "Presenter";
 
-    MainActivity view;
-    ApiClient apiClient;
+    private Contract.View view;
+    private ApiClient apiClient;
 
-    public Presenter(MainActivity view, ApiClient apiClient){
+    public Presenter(Contract.View view, ApiClient apiClient){
         this.view = view;
         this.apiClient = apiClient;
     }
-
 
     @Override
     public void getCats() {

@@ -1,9 +1,9 @@
-package com.aman1.rxjavatest;
+package com.aman1.rxjavatest.data;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-class CatsModel {
+public class CatsModel {
 
     @SerializedName("file")
     @Expose

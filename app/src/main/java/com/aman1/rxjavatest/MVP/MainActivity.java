@@ -1,20 +1,24 @@
-package com.aman1.rxjavatest;
+package com.aman1.rxjavatest.MVP;
 
-import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.aman1.rxjavatest.data.ApiClient;
+import com.aman1.rxjavatest.R;
 import com.squareup.picasso.Picasso;
 
-import retrofit2.http.Url;
-
 public class MainActivity extends AppCompatActivity implements Contract.View {
-    Presenter presenter;
-        Button button;
-        ImageView imageView;
+
+    private static final String TAG = "MainActivity";
+
+    private Contract.Presenter presenter;
+    private Button button;
+    private ImageView imageView;
+    private TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,15 +36,17 @@ public class MainActivity extends AppCompatActivity implements Contract.View {
                 }
             }
         });
-
         imageView = findViewById(R.id.imageView);
-
+        textView = findViewById(R.id.textView);
     }
 
     @Override
     public void displayCatImage(String url) {
         if (imageView != null){
             Picasso.get().load(url).into(imageView);
+            if (textView != null){
+                textView.setText(url);
+            }
         }
     }
 }
